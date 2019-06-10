@@ -12,15 +12,15 @@ namespace KolekcjePorownywanie
     {
         static void Main(string[] args)
         {
-            
+
             string strFilePath2 = @"C:\Users\Dominika\Desktop\detalhurt.csv";
-            
+
 
             List<Ceny> c = new List<Ceny>();
             List<Ceny1> c1 = new List<Ceny1>();
 
             File.Delete(strFilePath2);
-            
+
 
             using (StreamWriter str = new StreamWriter((strFilePath2), true, Encoding.GetEncoding(1252)))
             {
@@ -52,12 +52,12 @@ namespace KolekcjePorownywanie
 
                 }
                 foreach (Ceny ce in c)
-                    foreach(Ceny1 ce1 in c1)
-                {
+                    foreach (Ceny1 ce1 in c1)
+                    {
                         if (ce.Symbol.Equals(ce1.Symbol))
                         {
-                            if (ce.CenaBruttoDetal != ce1.CenaBruttoDetal)
-                            {
+                            if (ce.CenaBruttoDetal != ce1.CenaBruttoDetal | ce.CenaBruttoHurt!= ce1.CenaBruttoHurt)
+                                    {
 
                                 using (StreamWriter str = new StreamWriter((strFilePath2), true, Encoding.GetEncoding(1252)))
                                 {
@@ -69,32 +69,16 @@ namespace KolekcjePorownywanie
                                 }
                                 //Console.WriteLine("Nie sa równe " + ce.CenaNetto1 + " " + ce1.CenaNetto1);
                             }
-
-                            if (ce.CenaBruttoHurt != ce1.CenaBruttoHurt)
-                            {
-                                using (StreamWriter str = new StreamWriter((strFilePath2), true, Encoding.GetEncoding(1252)))
-                                {
-
-                                    str.WriteLine(String.Format("{0}; {1}; {2}; {3}; {4}; {5};", ce.Symbol, ce.Nazwa, ce.CenaBruttoDetal, ce1.CenaBruttoDetal, ce.CenaBruttoHurt, ce1.CenaBruttoHurt));
-
-
-                                    str.Close();
-                                }
-                            }
-                           
                         }
-                }
-
+                    }
             }
             Console.WriteLine("Zakończono. Dane zostały zapisane do pliku");
             Console.ReadKey(true);
 
-
-                }
-
+        }
         
     }
-        }
+}
 
 
 
