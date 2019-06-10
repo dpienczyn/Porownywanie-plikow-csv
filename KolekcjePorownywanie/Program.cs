@@ -13,27 +13,22 @@ namespace KolekcjePorownywanie
         static void Main(string[] args)
         {
             
-            string strFilePath2 = @"C:\Users\Dominika\Desktop\detal.csv";
-            string strFilePath3 = @"C:\Users\Dominika\Desktop\hurt.csv";
+            string strFilePath2 = @"C:\Users\Dominika\Desktop\detalhurt.csv";
+            
 
             List<Ceny> c = new List<Ceny>();
             List<Ceny1> c1 = new List<Ceny1>();
 
             File.Delete(strFilePath2);
-            File.Delete(strFilePath3);
+            
 
             using (StreamWriter str = new StreamWriter((strFilePath2), true, Encoding.GetEncoding(1252)))
             {
-                str.WriteLine(@"Symbol;Nazwa;CenaBruttoDetalBaza;CenaBruttoDetalSubiekt;");
-            }
-            
-            using(StreamWriter str1 = new StreamWriter((strFilePath3), true, Encoding.GetEncoding(1252)))
-            {
-                str1.WriteLine(@"Symbol;Nazwa;CenaBruttoHurtBaza;CenaBruttoHurtSubiekt;");
+                str.WriteLine(@"Symbol;Nazwa;CenaBruttoDetalBaza;CenaBruttoDetalSubiekt;CenaBruttoHurtBaza;CenaBruttoHurtSubiekt;");
             }
 
-            using (TextReader reader = File.OpenText(@"C:\Users\Dominika\Desktop\pp.csv"))
-            using (TextReader reader1 = File.OpenText(@"C:\Users\Dominika\Desktop\ppluki.csv"))
+            using (TextReader reader = File.OpenText(@"C:\Users\Dominika\Desktop\baza2345.csv"))
+            using (TextReader reader1 = File.OpenText(@"C:\Users\Dominika\Desktop\lukisubiekt.csv"))
             {
                 CsvReader csv = new CsvReader(reader);
                 CsvReader csv1 = new CsvReader(reader1);
@@ -67,7 +62,7 @@ namespace KolekcjePorownywanie
                                 using (StreamWriter str = new StreamWriter((strFilePath2), true, Encoding.GetEncoding(1252)))
                                 {
 
-                                    str.WriteLine(String.Format("{0}; {1}; {2}; {3};", ce.Symbol, ce.Nazwa, ce.CenaBruttoDetal, ce1.CenaBruttoDetal));
+                                    str.WriteLine(String.Format("{0}; {1}; {2}; {3}; {4}; {5};", ce.Symbol, ce.Nazwa, ce.CenaBruttoDetal, ce1.CenaBruttoDetal, ce.CenaBruttoHurt, ce1.CenaBruttoHurt));
 
 
                                     str.Close();
@@ -77,10 +72,10 @@ namespace KolekcjePorownywanie
 
                             if (ce.CenaBruttoHurt != ce1.CenaBruttoHurt)
                             {
-                                using (StreamWriter str = new StreamWriter((strFilePath3), true, Encoding.GetEncoding(1252)))
+                                using (StreamWriter str = new StreamWriter((strFilePath2), true, Encoding.GetEncoding(1252)))
                                 {
 
-                                    str.WriteLine(String.Format("{0}; {1}; {2}; {3};", ce.Symbol, ce.Nazwa, ce.CenaBruttoHurt, ce1.CenaBruttoHurt));
+                                    str.WriteLine(String.Format("{0}; {1}; {2}; {3}; {4}; {5};", ce.Symbol, ce.Nazwa, ce.CenaBruttoDetal, ce1.CenaBruttoDetal, ce.CenaBruttoHurt, ce1.CenaBruttoHurt));
 
 
                                     str.Close();
