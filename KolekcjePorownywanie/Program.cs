@@ -27,8 +27,8 @@ namespace KolekcjePorownywanie
                 str.WriteLine(@"Symbol;Nazwa;CenaBruttoDetalBaza;CenaBruttoDetalSubiekt;CenaBruttoHurtBaza;CenaBruttoHurtSubiekt;");
             }
 
-            using (TextReader reader = File.OpenText(@"C:\Users\Dominika\Desktop\baza2345.csv"))
-            using (TextReader reader1 = File.OpenText(@"C:\Users\Dominika\Desktop\lukisubiekt.csv"))
+            using (TextReader reader = File.OpenText(@"C:\Users\Dominika\Desktop\SubiektLuki.csv"))
+            using (TextReader reader1 = File.OpenText(@"C:\Users\Dominika\Desktop\IAIBaza.csv"))
             {
                 CsvReader csv = new CsvReader(reader);
                 CsvReader csv1 = new CsvReader(reader1);
